@@ -1,4 +1,5 @@
 <?php
+
     $dsn = 'mysql:dbname=Mymemorys;host=localhost';
     $user = 'root';
     $password='';
