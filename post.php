@@ -53,7 +53,7 @@ if (!empty($_POST)) {
             //バリエーションがうまくいった時
     if (empty($errors)) {
         $date_str = date('YmdHis');
-        $submit_file_name = $date_str;
+        $submit_file_name = $date_str.$file_name;
         move_uploaded_file($_FILES['input_img_name']['tmp_name'] , 'post_img/'.$submit_file_name);
 
 // tmp_nameとname(写真送信のとき使うやつ)の違い
@@ -72,6 +72,8 @@ if (!empty($_POST)) {
         $stmt ->execute($data);
 
         $dbh=null;
+
+        //$_SESSION['add']['img_name'] = $submit_file_name;
 
         header('Location: index.php');
         exit();

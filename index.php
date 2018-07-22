@@ -2,7 +2,7 @@
 
 require('template.php');
 
-$sql =  $sql = 'SELECT `img_name` FROM `feeds` ORDER BY date DESC';
+$sql =  $sql = 'SELECT * FROM `feeds`';
     $stmt = $dbh->prepare($sql);
     $stmt ->execute();
 
@@ -18,7 +18,8 @@ $sql =  $sql = 'SELECT `img_name` FROM `feeds` ORDER BY date DESC';
 $dbh=null;
 
 
-
+// var_dump($alls);
+// exit();
  ?>
 
 
@@ -93,9 +94,8 @@ $dbh=null;
 
                 <?php foreach ($alls as $all) { ?>
                     <div class="col-lg-4">
-                        <a href="detail.html" class="trim"><img class="picture" src="post_img/<?php echo htmlspecialchars($all); ?>" ></a>
+                        <a href="detail.php" class="trim"><img class=picture src="post_img/<?php echo $all['img_name'];?>"></a>
                     </div>
-
                 <?php } ?>
 <!--                 <div class="col-lg-4">
                     <a href="#"><img class="picture" src="assets/img/02.jpg" alt=""></a>
