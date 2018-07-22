@@ -1,3 +1,18 @@
+<?php
+
+  require('template.php');
+
+  $id = $_GET['id'];
+  $sql = 'SELECT * FROM `feeds` WHERE `id` = ?';
+  $data[] = $id;
+  $stmt = $dbh->prepare($sql);
+  $stmt->execute($data);
+  $all = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  $dbh=null;
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,13 +67,13 @@
       <div class="main-contents">
         <div class="col-lg-10 col-lg-offset-1 centered">
           <div class="col-xs-4">
-            <a href="" class="trim"><img class="picture" src="assets/img/background_img2.jpg" alt=""></a>
+            <a href="" class="trim"><img class="picture" src="post_img/<?php echo $all['img_name'];?>" alt=""></a>
           </div>
           <div class="col-xs-8">
             <div class="details">
-              <h3 class="post-title">タイトル（２４文字まで）</h3>
-              <h4 class="post-date">2018/12/09</h4><br>
-              <h3 class="post-detail">ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。ここに内容を書きます。（１４０文字まで）</h3>
+              <h3 class="post-title"><?php echo $all['title']; ?></h3>
+              <h4 class="post-date"><?php echo $all['date']; ?></h4><br>
+              <h3 class="post-detail"><?php echo $all["detail"]; ?></h3>
             </div>
           </div>
         </div>

@@ -94,7 +94,7 @@ $dbh=null;
 
                 <?php foreach ($alls as $all) { ?>
                     <div class="col-lg-4">
-                        <a href="detail.php" class="trim"><img class=picture src="post_img/<?php echo $all['img_name'];?>"></a>
+                        <a href="detail.php?id=<?php echo $all["id"]; ?>" class="trim"><img class=picture src="post_img/<?php echo $all['img_name'];?>"></a>
                     </div>
                 <?php } ?>
 <!--                 <div class="col-lg-4">
