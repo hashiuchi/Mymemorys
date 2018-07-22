@@ -72,8 +72,6 @@ if (!empty($_POST)) {
         $stmt ->execute($data);
 
         $dbh=null;
-exit();
-
 
         header('Location: index.php');
         exit();

@@ -1,3 +1,25 @@
+<?php
+
+require('template.php');
+
+$sql =  $sql = 'SELECT `img_name` FROM `feeds` ORDER BY date DESC';
+    $stmt = $dbh->prepare($sql);
+    $stmt ->execute();
+
+    $alls = array();
+
+    while (1){
+      $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+      if($rec==false){
+        break;
+      }
+    $alls[]=$rec;
+    }
+$dbh=null;
+
+
+
+ ?>
 
 
 
@@ -68,18 +90,22 @@
       <div class="main-contents">
             <div class="row centered mt grid">
                 <h3>Album</h3>
-                <div class="col-lg-4">
-                    <a href="detail.html" class="trim"><img class="picture" src="assets/img/background_img2.jpg" alt=""></a>
-                </div>
-                <div class="col-lg-4">
+
+                <?php foreach ($alls as $all) { ?>
+                    <div class="col-lg-4">
+                        <a href="detail.html" class="trim"><img class="picture" src="post_img/<?php echo htmlspecialchars($all); ?>" ></a>
+                    </div>
+
+                <?php } ?>
+<!--                 <div class="col-lg-4">
                     <a href="#"><img class="picture" src="assets/img/02.jpg" alt=""></a>
                 </div>
                 <div class="col-lg-4">
                     <a href="#"><img class="picture" src="assets/img/03.jpg" alt=""></a>
-                </div>
+ -->                </div>
             </div>
             
-            <div class="row centered mt grid">
+<!--             <div class="row centered mt grid">
                 <div class="col-lg-4">
                     <a href="#"><img class="picture" src="assets/img/04.jpg" alt=""></a>
                 </div>
@@ -90,7 +116,7 @@
                     <a href="#"><img class="picture" src="assets/img/06.jpg" alt=""></a>
                 </div>
         </div>
-        </div>
+ -->        </div>
     </div>
 
     <div id="f">
